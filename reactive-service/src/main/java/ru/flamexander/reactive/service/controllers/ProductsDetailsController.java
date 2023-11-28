@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import ru.flamexander.reactive.service.dtos.DetailedProductDto;
 import ru.flamexander.reactive.service.dtos.ProductDetailsDto;
 import ru.flamexander.reactive.service.services.ProductDetailsService;
 
@@ -23,4 +24,11 @@ public class ProductsDetailsController {
         Mono<ProductDetailsDto> p3 = productDetailsService.getProductDetailsById(3L);
         return p1.mergeWith(p2).mergeWith(p3);
     }
+
+    @GetMapping("/product/{id}")
+    public Flux<DetailedProductDto> getProductDetails(@PathVariable (value = "id") String id) {
+
+
+    }
+
 }
